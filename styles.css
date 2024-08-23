@@ -31,11 +31,11 @@ body {
 .card-first {
     position: absolute;
     height: 100%;
-    width: calc(100% - 367.4px);
+    width: calc(100% - 425px);
 }
 
 .card-second {
-    width: 367.4px;
+    width: 425px;
     background-color: rgb(18, 47, 63);
     height: 100%;
     right: 0;
@@ -159,7 +159,7 @@ input::-webkit-inner-spin-button {
    
  
     width: 100%;
-    padding-left: 14px;
+    padding-left: 35px;
 
 }
 
@@ -234,4 +234,40 @@ p.text-bold{
 
 .empty-result{
     transform: translateY(30%);
+}
+
+.radio-item {
+    position: relative;
+}
+
+
+.radio-item input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none; /* Ngăn chặn sự kiện click trên radio gốc */
+}
+
+.radio-item input[type="radio"] + .radio-label:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 17px;
+    height: 17px;
+    border: 2px solid hsl(200, 26%, 54%);
+    border-radius: 50%;
+    background-color: #fff;
+    margin: 9.6px;
+}
+
+
+.radio-item input[type="radio"]:checked + .radio-label:after {
+    content: '';
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    background-color: hsl(61, 70%, 52%);
+    border-radius: 50%;
+    top: 13px;
+    left: 13px;
 }

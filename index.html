@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
     rel="stylesheet">
-
+    <script src="index.js"></script>
   <title>Frontend Mentor | Mortgage repayment calculator</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
@@ -38,7 +38,7 @@
           <div class="input-label normal-text">Mortgage Amount</div>
           <div class="input-container">
             <span class="input-unit border-left">£</span>
-            <input type="number" name="mort-amount-ip" id="" class="input-field border-right text-bold">
+            <input type="number" name="mort-amount-ip" class="amount input-field border-right text-bold">
           </div>
         </div>
         <div class="input-wrapper">
@@ -60,18 +60,18 @@
 
         <div class="input-label normal-text ">Mortgage Type</div>
         <form class="input-radio-list">
-          <div class="input-container">
+          <div class="input-container radio-container  ">
             <div class="radio-item">
-              <input type="radio" id="repayment" name="morg-type" value="repayment">
-              <p for="repayment" class="radio-label text-bold">Repayment</p>
+              <input type="radio" id="repayment" name="morg-type" value="Repayment">
+              <label for="repayment" class="radio-label text-bold">Repayment</label>
             </div>
 
           </div>
 
-          <div class="input-container ">
+          <div class="input-container radio-container ">
             <div class="radio-item">
-              <input type="radio" id="interest" name="morg-type" value="repayment">
-              <p for="interest" class="radio-label text-bold">Interest Only</p>
+              <input type="radio" id="interest" name="morg-type" value="InterestOnly">
+              <label for="interest" class="radio-label text-bold">Interest Only</label>
             </div>
           </div>
         </form>
@@ -82,7 +82,7 @@
         </button>
       </div>
     </div>
-    <div class="card-second ">
+    <div class="card-second">
       <div class="result-section">
         <div class="empty-result">
           <div class="emp-res-img">
