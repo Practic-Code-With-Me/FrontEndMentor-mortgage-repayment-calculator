@@ -1,8 +1,6 @@
 :root {
     --primary-color: rgb(18, 47, 63);
     --secondary-color: rgb(227, 243, 253);
-
-
     --slate100: rgb(227, 243, 253);
     --slate300: rgb(154, 190, 213);
     --slate500: rgb(107, 148, 168);
@@ -21,10 +19,6 @@ body {
     background-color: var(--secondary-color);
     width: 100%;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 70px;
 }
 
 * {
@@ -41,7 +35,6 @@ body {
     height: 483px;
     border-radius: 1em;
     background-color: var(--white);
-
 }
 
 .card-first {
@@ -63,7 +56,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 
 .card-first-content {
@@ -167,21 +159,18 @@ input::-webkit-inner-spin-button {
     justify-content: center;
     align-items: center;
     position: relative;
-
 }
 
 .radio-label {
     margin-block: 0px;
     width: 100%;
     padding-left: 35px;
-
 }
 
 .input-radio-list {
     display: flex;
     flex-direction: column;
     gap: 10px;
-
 }
 
 .calculate-btn {
@@ -213,8 +202,6 @@ p.text-bold {
     margin-right: var(--em-07);
 }
 
-
-
 .emp-res-img {
     margin: 0 auto;
     width: 160px;
@@ -228,8 +215,6 @@ p.text-bold {
     vertical-align: middle;
     display: table-cell;
 }
-
-
 
 .res-desc {
     text-align: center;
@@ -277,6 +262,13 @@ p.text-bold {
     color: var(--white);
 }
 
+.error {
+    color: var(--red);
+    font-weight: 600;
+    font-size: 0.7rem;
+    margin: 1em 0 1.5em 0;
+}
+
 .hidden {
     display: none;
 }
@@ -290,7 +282,6 @@ p.text-bold {
     height: 100%;
 }
 
-
 .result-section-container.not-empty {
     text-align: start;
 }
@@ -299,20 +290,17 @@ p.text-bold {
     font-size: 0.9rem;
 }
 
-
 .input-focused {
     border: 1px solid var(--lime);
 }
 
 .input-focused-background {
-    background-color: hsl(61, 100%, 90%);
+    background-color: rgb(254, 255, 204);
 }
 
 .unit-focused {
     background-color: var(--lime);
 }
-
-
 
 .res-heading {
 

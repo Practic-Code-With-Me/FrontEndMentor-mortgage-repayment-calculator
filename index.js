@@ -1,7 +1,6 @@
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  let inputFields = document.getElementsByClassName('input-field');
   const inputs = document.querySelectorAll("input[type='number']");
   const radioInputs = document.querySelectorAll("input[type='radio']");
   const radioInputContainers = document.querySelectorAll(".input-container.radio-container");
@@ -9,10 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const notEmptyResultContainer = document.querySelector(".not-empty");
   const monthlyRepaymentTag = document.querySelector(".result-box > h1");
   const totalRepaymentTag = document.querySelector(".result-box > h3");
-
-
-
-  let form = document.querySelector("form");
+  const form = document.querySelector("form");
   const calculateButton = document.querySelector(".calculate-btn");
 
   let mortgageAmount = null,
@@ -20,53 +16,36 @@ document.addEventListener('DOMContentLoaded', function () {
     interestRate = null,
     mortgageType = null;
 
-
-
-
-
-
   const toggleFocusClass = (input, action) => {
     const inputContainer = input.parentElement;
- 
-    let unitBox = input.previousElementSibling;
-    if (input.name === 'amount') {
-      unitBox = input.previousElementSibling;
-  
-    }
-    else {
-      unitBox = input.nextElementSibling;
-  
-    }
+    const unitBox = input.name === 'amount' ? input.previousElementSibling : input.nextElementSibling;
 
     inputContainer.classList[action]("input-focused");
     unitBox.classList[action]("unit-focused");
   };
-
 
   const handleInputFocus = (input) => {
     input.addEventListener("focus", () => toggleFocusClass(input, "add"));
     input.addEventListener("blur", () => toggleFocusClass(input, "remove"));
   };
 
-
-  const handleRadioInputClick = (container) => {
+  radioInputContainers.forEach(container => {
     container.addEventListener('click', () => {
+      const selectedRadio = container.querySelector("input[type='radio']");
+      mortgageType = selectedRadio.name;
+
       radioInputs.forEach((radioInput) => {
-     
-        const isSelected = container.firstElementChild.name === radioInput.name;
+        const isSelected = radioInput === selectedRadio;
         const action = isSelected ? 'add' : 'remove';
         radioInput.parentElement.classList[action]("input-focused-background");
         radioInput.parentElement.classList[action]("input-focused");
         radioInput.checked = isSelected;
-        if (isSelected) mortgageType = radioInput.name;
+
       })
     })
-  }
-
-
+  });
 
   inputs.forEach(handleInputFocus);
-  radioInputContainers.forEach(handleRadioInputClick);
 
 
   form.addEventListener("submit", (e) => {
@@ -76,17 +55,20 @@ document.addEventListener('DOMContentLoaded', function () {
       const value = input.value;
 
       try {
-        switch (input.name) {
-          case "amount":
-            mortgageAmount = validateInput(input, value);
-            break;
-          case "term":
-            mortgageTerm = validateInput(input, value);
-            break;
-          case "rate":
-            interestRate = validateInput(input, value);
-            break;
+        if (value) {
+          switch (input.name) {
+            case "amount":
+              mortgageAmount = value;
+              break;
+            case "term":
+              mortgageTerm = value;
+              break;
+            case "rate":
+              interestRate = value;
+              break;
+          }
         }
+        validateInput(input, value);
       } catch (error) {
         console.error("Error during switch processing:", error);
       }
@@ -94,7 +76,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     if (!mortgageType) {
-      console.log(calculateButton.previousElementSibling.classList)
       calculateButton.previousElementSibling.classList.remove("hidden");
     } else {
       calculateButton.previousElementSibling.classList.add("hidden");
@@ -105,7 +86,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const { monthlyRepayment, totalRepaymentAmount } = calculateRepayments(mortgageAmount, mortgageTerm, interestRate);
 
-    console.log(monthlyRepayment, totalRepaymentAmount)
     emptyResultContainer.classList.add("hidden");
     notEmptyResultContainer.classList.remove("hidden");
 
@@ -140,17 +120,8 @@ const validateInput = (input, value) => {
   const showError = !value;
   const inputContainer = input.parentElement;
   const errorMessage = inputContainer.nextElementSibling;
-  let unitBox = input.previousElementSibling;
-  if (input.name === 'amount') {
-    unitBox = input.previousElementSibling;
-
-  }
-  else {
-    unitBox = input.nextElementSibling;
-
-  }
-
-
+  const unitBox = input.name === 'amount' ? input.previousElementSibling : input.nextElementSibling;
+  
   errorMessage.classList.toggle("hidden", !showError);
   unitBox.classList.toggle("error-unit", showError);
   inputContainer.classList.toggle("error-border", showError);
@@ -160,35 +131,3 @@ const validateInput = (input, value) => {
 
 
 
-  // for (let i = 0; i < radioItems.length; i++) {
-  //   radioItems[i].addEventListener('click', function () {
-
-  //     for (let j = 0; j < radioContainerFields.length; j++) {
-  //       radioContainerFields[j].style.borderColor = '#d5e5eb';
-  //       radioContainerFields[j].style.backgroundColor = '#ffffff'; // Nền trắng mặc định
-  //     }
-
-
-  //     radioContainerFields[i].style.borderColor = '#d7da2f';
-  //     radioContainerFields[i].style.backgroundColor = '#feffcc';
-  //   });
-  // }
-
-
-
-
-// for (let i = 0; i < inputFields.length; i++) {
-//   inputFields[i].addEventListener('focus', function () {
-//     this.style.borderColor = '#d7da2f'
-//     inputContainerFields[i].style.borderColor = '#d7da2f'
-//     inputUnit[i].style.backgroundColor = '#d7da2f'
-
-//   });
-
-//   inputFields[i].addEventListener('blur', function () {
-
-//     this.style.borderColor = '';
-//     inputContainerFields[i].style.borderColor = ''
-//     inputUnit[i].style.backgroundColor = ''
-//   });
-// }
