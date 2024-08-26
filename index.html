@@ -15,65 +15,70 @@
 </head>
 
 <body>
-  <div class="card-wrapper">
-    <form class="card-first">
-      <div class="card-first-content">
-        <div class="card-header">
-          <h1 class="card-title">Mortgage Calculator</h1>
-          <a href="." class="clear-all-tag normal-text">Clear All</a>
-        </div>
+  <main class="card-wrapper">
+    <section class="card-first">
+      <form>
+        <div class="card-first-content">
+          <header>
+            <div class="card-header">
+              <h1 class="card-title">Mortgage Calculator</h1>
+              <a href="." class="clear-all-tag normal-text">Clear All</a>
+            </div>
+          </header>
 
-        <div class="input-field-content">
-          <div class="input-label normal-text">Mortgage Amount</div>
-          <div class="input-container">
-            <span class="input-unit border-left">£</span>
-            <input type="number" name="amount" class="amount input-field border-right text-bold">
+          <div class="input-field-content">
+            <div class="input-label normal-text" id="amount-label">Mortgage Amount</div>
+            <div class="input-container">
+              <span class="input-unit border-left">£</span>
+              <input type="number" name="amount" class="amount input-field border-right text-bold"
+                aria-labelledby="amount-label">
+            </div>
+            <p class="error hidden">This field is required</p>
+          </div>
+          <div class="input-wrapper">
+            <div class="input-field-content field-2">
+              <div class="input-label normal-text" id="term-label">Mortgage Term</div>
+              <div class="input-container">
+                <input type="number" name="term" class="input-field  text-bold border-left term"
+                  aria-labelledby="term-label">
+                <span class="input-unit border-right">years</span>
+              </div>
+              <p class="error hidden">This field is required</p>
+            </div>
+            <div class="input-field-content field-2">
+              <div class="input-label normal-text" id="rate-label">Interest Rate</div>
+              <div class="input-container">
+                <input type="number" name="rate" class="input-field text-bold border-left rate"
+                  aria-labelledby="rate-label">
+                <span class="input-unit border-right">%</span>
+              </div>
+              <p class="error hidden">This field is required</p>
+            </div>
+          </div>
+
+          <p class="input-label normal-text ">Mortgage Type</p>
+
+          <div class="input-radio-list">
+            <div class="input-container radio-container  ">
+              <input type="radio" id="repayment" name="mortgage-type" value="Repayment">
+              <label for="repayment" class="radio-label text-bold">Repayment</label>
+            </div>
+
+            <div class="input-container radio-container ">
+              <input type="radio" id="interest" name="mortgage-type" value="InterestOnly">
+              <label for="interest" class="radio-label text-bold" >Interest Only</label>
+            </div>
           </div>
           <p class="error hidden">This field is required</p>
+          <button class="calculate-btn" type="submit">
+            <span class="btn-icon"> <img src="./assets/images/icon-calculator.svg" alt="calculator-icon"></span>
+            <span class="text-bold">Calculate Repayments</span>
+          </button>
         </div>
-        <div class="input-wrapper">
-          <div class="input-field-content field-2">
-            <div class="input-label normal-text">Mortgage Term</div>
-            <div class="input-container">
-              <input type="number" name="term" class="input-field  text-bold border-left term">
-              <span class="input-unit border-right">years</span>
-            </div>
-            <p class="error hidden">This field is required</p>
-          </div>
-          <div class="input-field-content field-2">
-            <div class="input-label normal-text">Interest Rate</div>
-            <div class="input-container">
-              <input type="number" name="rate" class="input-field text-bold border-lef rate">
-              <span class="input-unit border-right">%</span>
-            </div>
-            <p class="error hidden">This field is required</p>
-          </div>
-        </div>
+      </form>
+    </section>
 
-        <p class="input-label normal-text ">Mortgage Type
-
-        <div class="input-radio-list">
-          <div class="input-container radio-container  ">
-            <input type="radio" id="repayment" name="repayment" value="Repayment">
-            <label for="repayment" class="radio-label text-bold">Repayment</label>
-          </div>
-
-          <div class="input-container radio-container ">
-            <input type="radio" id="interest" name="interest-only" value="InterestOnly">
-            <label for="interest" class="radio-label text-bold">Interest Only</label>
-          </div>
-
-
-        </div>
-        <p class="error hidden">This field is required</p>
-        <button class="calculate-btn" type="submit">
-          <div class="btn-icon"> <img src="./assets/images/icon-calculator.svg" alt="calculator-icon"></div>
-          <p class="text-bold">Calculate Repayments </p>
-        </button>
-      </div>
-    </form>
-
-    <div class="card-second">
+    <section class="card-second">
       <div class="result-section-container empty">
         <div class="empty-result">
           <div class="emp-res-img">
@@ -93,16 +98,14 @@
         </p>
         <div class="result-box">
           <p>Your monthly repayments</p>
-          <h1></h1>
+          <h1>0</h1>
           <hr />
           <p>Total you'll repay over the term</p>
-          <h3></h3>
+          <h3>0</h3>
         </div>
       </div>
-    </div>
-
-  </div>
-
+    </section>
+  </main>
 </body>
 
 </html>

@@ -17,8 +17,12 @@
 
 body {
     background-color: var(--secondary-color);
-    width: 100%;
-    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    min-height: 100vh;
 }
 
 * {
@@ -342,9 +346,12 @@ p.text-bold {
 }
 
 @media screen and (min-width: 1488px) {
-    .card-wrapper {
-        transform: translateY(25%);
+
+    #root {
+        max-width: 100%;
+        margin: 2rem;
     }
+
 }
 
 @media screen and (min-width: 790px) {

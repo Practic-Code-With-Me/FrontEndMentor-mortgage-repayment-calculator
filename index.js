@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
   radioInputContainers.forEach(container => {
     container.addEventListener('click', () => {
       const selectedRadio = container.querySelector("input[type='radio']");
-      mortgageType = selectedRadio.name;
+      mortgageType = selectedRadio.id;
 
       radioInputs.forEach((radioInput) => {
         const isSelected = radioInput === selectedRadio;
@@ -121,7 +121,7 @@ const validateInput = (input, value) => {
   const inputContainer = input.parentElement;
   const errorMessage = inputContainer.nextElementSibling;
   const unitBox = input.name === 'amount' ? input.previousElementSibling : input.nextElementSibling;
-  
+
   errorMessage.classList.toggle("hidden", !showError);
   unitBox.classList.toggle("error-unit", showError);
   inputContainer.classList.toggle("error-border", showError);
